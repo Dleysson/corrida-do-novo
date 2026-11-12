@@ -83,32 +83,50 @@ document.addEventListener("DOMContentLoaded", () => {
   initReveal();
 });
 
-// ==================== HOME: STAGE CARDS ====================
+// ==================== HOME: CITY LIST ====================
+const PIN_ICON = `
+  <span class="city-pin" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/>
+    </svg>
+  </span>`;
+
 function renderStageCards() {
-  const grid = document.getElementById("stage-grid");
-  if (!grid) return;
+  const listEl = document.getElementById("city-list");
+  const kitImg = document.getElementById("kit-preview-img");
+  if (!listEl) return;
 
   const sorted = [...CITY_KEYS].sort(
     (a, b) => new Date(CITIES[a].targetDate) - new Date(CITIES[b].targetDate)
   );
 
-  sorted.forEach((key) => {
+  function preview(key, link) {
+    listEl.querySelectorAll(".city-option").forEach((el) => {
+      el.classList.toggle("is-active", el === link);
+    });
+    if (kitImg) {
+      kitImg.src = CITIES[key].kitImg;
+      kitImg.alt = `Kit da etapa ${CITIES[key].name}`;
+    }
+  }
+
+  sorted.forEach((key, index) => {
     const city = CITIES[key];
-    const card = document.createElement("a");
-    card.className = "stage-card";
-    card.href = `etapa.html?cidade=${key}`;
-    card.innerHTML = `
-      <div class="stage-card-media">
-        <img src="${city.kitImg}" alt="Kit da etapa ${city.name}" loading="lazy" />
-      </div>
-      <div class="stage-card-body">
-        <span class="stage-card-date">${city.dateText}</span>
-        <h3 class="stage-card-name">${city.name} <span>${city.state}</span></h3>
-        <p class="stage-card-location">${city.location}</p>
-        <span class="stage-card-cta">Ver etapa <span aria-hidden="true">→</span></span>
-      </div>
+    const li = document.createElement("li");
+    const link = document.createElement("a");
+    link.className = "city-option";
+    link.href = `etapa.html?cidade=${key}`;
+    link.innerHTML = `
+      ${PIN_ICON}
+      <span class="city-option-name">${city.label}</span>
+      <span class="city-option-date">${city.dateText}</span>
+      <span class="city-option-arrow" aria-hidden="true">→</span>
     `;
-    grid.appendChild(card);
+    link.addEventListener("mouseenter", () => preview(key, link));
+    link.addEventListener("focus", () => preview(key, link));
+    li.appendChild(link);
+    listEl.appendChild(li);
+    if (index === 0) preview(key, link);
   });
 }
 
@@ -334,7 +352,7 @@ function initReveal() {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
   const targets = document.querySelectorAll(
-    ".kit-card, .city-aside, .stage-card, .section-title-wrap, .ticket-card, .countdown-box, .accordion-item"
+    ".kit-card, .city-aside, .story-grid, .section-title-wrap, .ticket-card, .countdown-box, .accordion-item"
   );
   const observer = new IntersectionObserver(
     (entries) => {

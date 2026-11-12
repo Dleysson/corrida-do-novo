@@ -74,20 +74,25 @@ button {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(8px);
-  border-bottom: 3px solid var(--yellow);
-  box-shadow: var(--shadow-sm);
+  background: #FFFFFF;
   padding: 14px 24px;
-  transition: all 0.25s ease;
+  min-height: 75px;
+  display: flex;
+  align-items: center;
 }
 
 .topbar-container {
+  width: 100%;
   max-width: 1240px;
   margin: 0 auto;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
+  gap: 24px;
+}
+
+.topbar-container > .nav-cta-btn {
+  justify-self: end;
 }
 
 .brand-logo {
@@ -129,10 +134,10 @@ button {
   font-family: var(--font-heading);
   font-style: italic;
   font-weight: 700;
-  font-size: 1.05rem;
-  color: #333;
+  font-size: 1rem;
+  color: var(--primary-red);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   position: relative;
   padding: 6px 0;
   transition: color 0.2s;
@@ -140,7 +145,7 @@ button {
 
 .nav a:hover,
 .nav a.active {
-  color: var(--primary-red);
+  color: var(--dark-red);
 }
 
 .nav a::after {
@@ -287,13 +292,16 @@ button {
   transition: opacity 0.3s ease;
 }
 
+/* ==================== RED SECTIONS ==================== */
+.section-red {
+  background: var(--primary-red);
+  color: #FFFFFF;
+}
+
 /* ==================== SECTION KIT & CITY SELECTOR ==================== */
-.section-kit-selector {
+.section-kit-selector,
+.section-stages {
   position: relative;
-  background-color: #FAFAFA;
-  background-image: url('assets/common/BG_BRANCO.png');
-  background-size: cover;
-  background-position: center;
   padding: 72px 24px;
   overflow: hidden;
 }
@@ -320,10 +328,9 @@ button {
   align-items: center;
   justify-content: center;
   padding: 36px 28px 28px;
-  background: radial-gradient(circle at 50% 42%, #FFF3B8 0%, #FFFFFF 62%);
-  border: 1px solid #F1ECE2;
-  border-radius: 32px;
-  box-shadow: var(--shadow-md);
+  background: #FFFFFF;
+  border-radius: 28px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
 }
 
 .kit-preview-frame {
@@ -388,7 +395,7 @@ button {
   font-weight: 800;
   font-size: 1rem;
   letter-spacing: 0.12em;
-  color: var(--primary-red);
+  color: #FFFFFF;
   text-align: left;
   margin-bottom: 18px;
   text-transform: uppercase;
@@ -476,14 +483,154 @@ button {
   transition: color 0.15s ease;
 }
 
-.stage-back-link:hover {
+.section-red .stage-back-link {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.stage-back-link:hover,
+.section-red .stage-back-link:hover {
+  color: var(--yellow);
+}
+
+/* Home city list */
+.city-panel {
+  background: #FFFFFF;
+  border-radius: 26px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+  padding: 14px;
+}
+
+.city-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.city-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-weight: 800;
+  font-size: 1.35rem;
+  letter-spacing: 0.04em;
+  color: #777;
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.city-option .city-pin {
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  color: #AAA;
+}
+
+.city-option .city-pin svg {
+  width: 100%;
+  height: 100%;
+}
+
+.city-option-date {
+  margin-left: auto;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  opacity: 0.8;
+}
+
+.city-option-arrow {
+  font-style: normal;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.city-option.is-active {
+  background: var(--primary-red);
+  color: #FFFFFF;
+  box-shadow: 0 8px 20px rgba(230, 0, 18, 0.35);
+}
+
+.city-option.is-active .city-pin {
+  color: var(--yellow);
+}
+
+.city-option.is-active .city-option-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Story */
+.story {
+  padding: 24px 24px 80px;
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 56px;
+  align-items: center;
+  max-width: 1080px;
+}
+
+.story-text p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: 420px;
+}
+
+.story-text p + p {
+  margin-top: 14px;
+}
+
+.story-slogan {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-weight: 900;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.story-slogan span {
+  color: var(--yellow);
+}
+
+.cta-band {
+  text-align: center;
+  margin-top: 64px;
+}
+
+.cta-band-btn {
+  display: inline-block;
+  background: var(--yellow);
   color: var(--primary-red);
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-weight: 900;
+  font-size: 1.3rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 16px 48px;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.cta-band-btn:hover {
+  background: #FFFFFF;
+  transform: translateY(-2px);
 }
 
 .city-aside-info {
   margin-top: 18px;
   padding-left: 4px;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.85);
   font-size: 0.95rem;
   font-weight: 600;
 }
@@ -510,130 +657,6 @@ button {
 .city-aside-cta:hover {
   background: var(--yellow-dark);
   transform: translateY(-2px);
-}
-
-/* ==================== HOME: STAGES ==================== */
-.section-stages {
-  background: var(--bg-light);
-  padding: 88px 24px 110px;
-}
-
-.stage-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 28px;
-  max-width: 1120px;
-  margin: 0 auto;
-}
-
-.stage-card {
-  display: flex;
-  flex-direction: column;
-  background: #FFFFFF;
-  border: 2px solid #EFEBE3;
-  border-radius: 28px;
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-}
-
-.stage-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--primary-red);
-  box-shadow: 0 18px 40px rgba(230, 0, 18, 0.14);
-}
-
-.stage-card-media {
-  background: radial-gradient(circle at 50% 45%, #FFF3B8 0%, #FFFFFF 65%);
-  padding: 28px 24px 8px;
-  display: flex;
-  justify-content: center;
-}
-
-.stage-card-media img {
-  height: 240px;
-  width: auto;
-  object-fit: contain;
-  transition: transform 0.3s ease;
-}
-
-.stage-card:hover .stage-card-media img {
-  transform: scale(1.04);
-}
-
-.stage-card-body {
-  padding: 20px 26px 26px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  flex: 1;
-}
-
-.stage-card-date {
-  align-self: flex-start;
-  background: var(--yellow);
-  color: var(--primary-red);
-  font-family: var(--font-heading);
-  font-style: italic;
-  font-weight: 900;
-  font-size: 0.95rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 3px 12px;
-  border-radius: var(--radius-pill);
-}
-
-.stage-card-name {
-  font-family: var(--font-heading);
-  font-style: italic;
-  font-weight: 900;
-  font-size: 2.2rem;
-  line-height: 1.05;
-  text-transform: uppercase;
-  color: var(--text-dark);
-  margin-top: 6px;
-}
-
-.stage-card-name span {
-  font-size: 1.1rem;
-  color: var(--text-muted);
-}
-
-.stage-card-location {
-  color: var(--text-muted);
-  font-size: 0.95rem;
-  margin-bottom: 14px;
-}
-
-.stage-card-cta {
-  margin-top: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background: var(--primary-red);
-  color: #FFFFFF;
-  font-family: var(--font-heading);
-  font-style: italic;
-  font-weight: 800;
-  font-size: 1.15rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  padding: 12px 20px;
-  border-radius: var(--radius-pill);
-  transition: background-color 0.2s ease;
-}
-
-.stage-card:hover .stage-card-cta {
-  background: var(--primary-red-hover);
-}
-
-.stage-card-cta span {
-  transition: transform 0.2s ease;
-}
-
-.stage-card:hover .stage-card-cta span {
-  transform: translateX(5px);
 }
 
 /* ==================== TICKETS & REGISTRATION SECTION ==================== */
@@ -1095,49 +1118,26 @@ button {
 
 /* ==================== FOOTER ==================== */
 .footer {
-  background: #111111;
+  background: #F3F3F3;
   color: #888888;
-  padding: 64px 24px 32px;
-  border-top: 6px solid var(--yellow);
-  background-image: repeating-linear-gradient(-60deg, rgba(255, 255, 255, 0.025) 0 2px, transparent 2px 28px);
+  padding: 22px 24px;
+  font-size: 0.8rem;
 }
 
 .footer-inner {
   max-width: 1240px;
   margin: 0 auto;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  text-align: center;
-  gap: 24px;
-}
-
-.footer-brand {
-  font-family: var(--font-heading);
-  font-style: italic;
-  font-weight: 900;
-  font-size: 2.4rem;
-  line-height: 1;
-  color: #FFFFFF;
-  text-transform: uppercase;
-}
-
-.footer-brand span {
-  color: var(--primary-red);
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
 .footer-links {
   display: flex;
-  gap: 28px;
+  gap: 18px;
   flex-wrap: wrap;
-  justify-content: center;
-  font-family: var(--font-heading);
-  font-style: italic;
-  font-weight: 700;
-  font-size: 1.05rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #B5B5B5;
 }
 
 .footer-links a {
@@ -1145,15 +1145,7 @@ button {
 }
 
 .footer-links a:hover {
-  color: var(--yellow);
-}
-
-.footer-copy {
-  font-size: 0.85rem;
-  color: #666;
-  border-top: 1px solid #222;
-  padding-top: 24px;
-  width: 100%;
+  color: var(--primary-red);
 }
 
 /* ==================== SIGNUP MODAL ==================== */
@@ -1339,8 +1331,38 @@ button:focus-visible {
   .topbar {
     padding: 12px 16px;
   }
-  .nav a:not(.nav-cta-btn) {
+  .nav {
     display: none;
+  }
+  .topbar-container {
+    grid-template-columns: 1fr auto;
+  }
+  .brand-logo {
+    font-size: 1.15rem;
+    gap: 8px;
+    white-space: nowrap;
+  }
+  .brand-icon {
+    width: 28px;
+    height: 28px;
+  }
+  .nav-cta-btn {
+    white-space: nowrap;
+    padding: 8px 16px !important;
+    font-size: 0.9rem;
+  }
+  .story-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    text-align: center;
+  }
+  .story-text p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .footer-inner {
+    justify-content: center;
+    text-align: center;
   }
   .brand-badge {
     display: none;
