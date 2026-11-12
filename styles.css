@@ -103,6 +103,12 @@ button {
   text-transform: uppercase;
 }
 
+.brand-icon {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+}
+
 .brand-badge {
   background: var(--yellow);
   color: var(--primary-red);
