@@ -172,7 +172,7 @@ function updateCityUI() {
     }, 150);
   }
 
-  document.title = `Etapa ${city.name} — Corrida do Novo 2027 | Novo Atacarejo`;
+  document.title = `${city.name} • Corrida do Novo`;
 
   // 3. Stage badges & titles across page
   document.querySelectorAll(".dynamic-city-name").forEach((el) => {
