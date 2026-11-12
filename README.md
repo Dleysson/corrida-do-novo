@@ -20,3 +20,4 @@ Landing page oficial do circuito de corridas de rua **Corrida do Novo** (Novo At
 - HTML5 Semântico
 - CSS3 Moderno (Custom Properties, Flexbox, Grid, Responsividade)
 - JavaScript Vanilla
+

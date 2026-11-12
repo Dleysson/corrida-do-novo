@@ -68,8 +68,13 @@ document.addEventListener("DOMContentLoaded", () => {
     currentTab = tabParam;
   }
 
+  if (document.body.dataset.page === "home") {
+    renderStageCards();
+    initReveal();
+    return;
+  }
+
   initTabs();
-  renderCitySelector();
   updateCityUI();
   initCountdown();
   initAccordion();
@@ -77,6 +82,35 @@ document.addEventListener("DOMContentLoaded", () => {
   initNavScroll();
   initReveal();
 });
+
+// ==================== HOME: STAGE CARDS ====================
+function renderStageCards() {
+  const grid = document.getElementById("stage-grid");
+  if (!grid) return;
+
+  const sorted = [...CITY_KEYS].sort(
+    (a, b) => new Date(CITIES[a].targetDate) - new Date(CITIES[b].targetDate)
+  );
+
+  sorted.forEach((key) => {
+    const city = CITIES[key];
+    const card = document.createElement("a");
+    card.className = "stage-card";
+    card.href = `etapa.html?cidade=${key}`;
+    card.innerHTML = `
+      <div class="stage-card-media">
+        <img src="${city.kitImg}" alt="Kit da etapa ${city.name}" loading="lazy" />
+      </div>
+      <div class="stage-card-body">
+        <span class="stage-card-date">${city.dateText}</span>
+        <h3 class="stage-card-name">${city.name} <span>${city.state}</span></h3>
+        <p class="stage-card-location">${city.location}</p>
+        <span class="stage-card-cta">Ver etapa <span aria-hidden="true">→</span></span>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
 
 // ==================== TABS LOGIC ====================
 function initTabs() {
@@ -103,51 +137,7 @@ function setTab(tabKey) {
   updateURLParams();
 }
 
-// ==================== CITY SELECTION LOGIC ====================
-function renderCitySelector() {
-  const city = CITIES[currentCityId];
-  const currentBtn = document.getElementById("city-current-btn");
-  if (currentBtn) {
-    const labelEl = currentBtn.querySelector(".city-current-label");
-    if (labelEl) labelEl.textContent = city.label;
-  }
-
-  const listEl = document.getElementById("city-list");
-  if (!listEl) return;
-  listEl.innerHTML = "";
-
-  CITY_KEYS.forEach((key) => {
-    if (key === currentCityId) return;
-    const item = CITIES[key];
-    const li = document.createElement("li");
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "city-option";
-    btn.innerHTML = `
-      <span class="city-pin" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/>
-        </svg>
-      </span>
-      <span>${item.label}</span>
-      <span style="font-size: 0.8rem; opacity: 0.8; margin-left: auto; font-style: normal; font-weight: 500;">${item.dateText}</span>
-    `;
-    btn.addEventListener("click", () => {
-      selectCity(key);
-    });
-    li.appendChild(btn);
-    listEl.appendChild(li);
-  });
-}
-
-function selectCity(cityId) {
-  if (!CITIES[cityId]) return;
-  currentCityId = cityId;
-  renderCitySelector();
-  updateCityUI();
-  updateURLParams();
-}
-
+// ==================== CITY PAGE ====================
 function updateURLParams() {
   if (window.history && window.history.replaceState) {
     const url = new URL(window.location.href);
@@ -182,12 +172,17 @@ function updateCityUI() {
     }, 150);
   }
 
+  document.title = `Etapa ${city.name} — Corrida do Novo 2027 | Novo Atacarejo`;
+
   // 3. Stage badges & titles across page
   document.querySelectorAll(".dynamic-city-name").forEach((el) => {
     el.textContent = city.name;
   });
   document.querySelectorAll(".dynamic-city-date").forEach((el) => {
     el.textContent = city.dateText;
+  });
+  document.querySelectorAll(".dynamic-city-state").forEach((el) => {
+    el.textContent = city.state;
   });
   document.querySelectorAll(".dynamic-city-location").forEach((el) => {
     el.textContent = city.location;
@@ -339,7 +334,7 @@ function initReveal() {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
   const targets = document.querySelectorAll(
-    ".kit-card, .city-aside, .section-title-wrap, .ticket-card, .colaborador-banner-card, .countdown-box, .accordion-item"
+    ".kit-card, .city-aside, .stage-card, .section-title-wrap, .ticket-card, .colaborador-banner-card, .countdown-box, .accordion-item"
   );
   const observer = new IntersectionObserver(
     (entries) => {
