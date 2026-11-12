@@ -738,37 +738,6 @@ button {
   box-shadow: var(--shadow-md);
 }
 
-.ticket-card.featured {
-  border-color: var(--primary-red);
-  background: linear-gradient(180deg, #FFF8F8 0%, #FFFFFF 40%);
-  box-shadow: 0 18px 40px rgba(230, 0, 18, 0.16);
-  transform: translateY(-8px);
-}
-
-.ticket-card.featured:hover {
-  transform: translateY(-12px);
-  border-color: var(--primary-red);
-}
-
-.ticket-card-badge {
-  position: absolute;
-  top: -14px;
-  left: 50%;
-  transform: translateX(-50%);
-  white-space: nowrap;
-  box-shadow: 0 4px 10px rgba(230, 0, 18, 0.3);
-  background: var(--primary-red);
-  color: #fff;
-  font-family: var(--font-heading);
-  font-weight: 800;
-  font-style: italic;
-  font-size: 0.85rem;
-  padding: 5px 16px;
-  border-radius: var(--radius-pill);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
 .ticket-distance-pill {
   display: inline-flex;
   align-items: center;
@@ -877,62 +846,6 @@ button {
   background: var(--primary-red-hover);
   transform: translateY(-2px);
   box-shadow: 0 6px 18px rgba(230, 0, 18, 0.45);
-}
-
-/* Colaborador Banner Card */
-.colaborador-banner-card {
-  background: linear-gradient(135deg, #FFF6D6 0%, #FFEBA3 100%);
-  border: 2px solid var(--yellow);
-  border-radius: 20px;
-  padding: 28px 32px;
-  max-width: 1000px;
-  margin: 0 auto 36px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  box-shadow: var(--shadow-sm);
-}
-
-.colaborador-banner-text h3 {
-  font-family: var(--font-heading);
-  font-style: italic;
-  font-weight: 900;
-  font-size: 1.55rem;
-  color: #614600;
-  text-transform: uppercase;
-  margin-bottom: 6px;
-}
-
-.colaborador-banner-text p {
-  color: #4A3A0A;
-  font-size: 0.98rem;
-  max-width: 650px;
-}
-
-.colaborador-coupon-box {
-  background: #FFFFFF;
-  border: 2px dashed #C89B00;
-  border-radius: 12px;
-  padding: 10px 18px;
-  text-align: center;
-  flex-shrink: 0;
-}
-
-.colaborador-coupon-box .code-label {
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: #888;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
-.colaborador-coupon-box .code-val {
-  font-family: var(--font-heading);
-  font-weight: 900;
-  font-size: 1.35rem;
-  color: var(--primary-red);
-  letter-spacing: 0.04em;
 }
 
 /* Large CTA bar at bottom of tickets */
@@ -1420,10 +1333,6 @@ button:focus-visible {
   .stage-summary {
     padding: 24px;
   }
-  .colaborador-banner-card {
-    flex-direction: column;
-    text-align: center;
-  }
 }
 
 @media (max-width: 768px) {
@@ -1435,10 +1344,6 @@ button:focus-visible {
   }
   .brand-badge {
     display: none;
-  }
-  .ticket-card.featured,
-  .ticket-card.featured:hover {
-    transform: none;
   }
   .section-countdown {
     padding: 56px 16px;
