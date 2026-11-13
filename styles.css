@@ -1283,6 +1283,17 @@ button {
   transform: translateY(-2px);
 }
 
+/* ==================== DISABLED SIGNUP ==================== */
+a.is-disabled {
+  background: #BDBDBD !important;
+  color: #FFFFFF !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  cursor: not-allowed;
+  pointer-events: none;
+  transform: none !important;
+}
+
 /* ==================== SCROLL REVEAL ==================== */
 .reveal {
   opacity: 0;

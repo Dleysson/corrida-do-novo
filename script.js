@@ -12,8 +12,6 @@ const CITIES = {
     distances: ["5KM", "10KM", "15KM"],
     location: "Praia de Pajuçara / Ponta Verde — Maceió, AL",
     time: "06h00 (Largada)",
-    urlGeral: "https://eventos.fluasports.com/corrida-do-novo-circuito-2027-maceio",
-    urlColaborador: "https://eventos.fluasports.com/corrida-do-novo-circuito-2027-maceio-colaborador",
     regulamentoUrl: "#regulamento"
   },
   recife: {
@@ -28,8 +26,6 @@ const CITIES = {
     distances: ["5KM", "10KM", "15KM"],
     location: "Cais da Alfândega / Marco Zero — Recife, PE",
     time: "06h00 (Largada)",
-    urlGeral: "https://eventos.fluasports.com/corrida-do-novo-circuito-2027-recife",
-    urlColaborador: "https://eventos.fluasports.com/corrida-do-novo-circuito-2027-recife-colaborador",
     regulamentoUrl: "#regulamento"
   },
   joaoPessoa: {
@@ -44,8 +40,6 @@ const CITIES = {
     distances: ["5KM", "10KM", "15KM"],
     location: "Busto de Tamandaré / Cabo Branco — João Pessoa, PB",
     time: "06h00 (Largada)",
-    urlGeral: "https://eventos.fluasports.com/corrida-do-novo-circuito-2027-joao-pessoa",
-    urlColaborador: "https://eventos.fluasports.com/corrida-do-novo-circuito-2027-joao-pessoa-colaborador",
     regulamentoUrl: "#regulamento"
   }
 };
@@ -208,10 +202,10 @@ function updateCityUI() {
 
   // 4. Update CTAs with correct signup links
   document.querySelectorAll(".dynamic-link-geral").forEach((a) => {
-    a.href = city.urlGeral;
+    setSignupLink(a, city.urlGeral);
   });
   document.querySelectorAll(".dynamic-link-colaborador").forEach((a) => {
-    a.href = city.urlColaborador;
+    setSignupLink(a, city.urlColaborador);
   });
 
   // 5. Update countdown city notice
@@ -219,6 +213,22 @@ function updateCityUI() {
   if (cdNotice) {
     cdNotice.textContent = `ETAPA ${city.label} • ${city.dateText.toUpperCase()} • LARGADA 06H`;
   }
+}
+
+// Inscrições fechadas: sem URL no CITIES, o botão fica desativado e sem href,
+// para que o link de compra não chegue ao navegador.
+function setSignupLink(link, url) {
+  if (url) {
+    link.href = url;
+    link.classList.remove("is-disabled");
+    link.removeAttribute("aria-disabled");
+    return;
+  }
+  link.removeAttribute("href");
+  link.removeAttribute("target");
+  link.classList.add("is-disabled");
+  link.setAttribute("aria-disabled", "true");
+  link.title = "Inscrições em breve";
 }
 
 // ==================== COUNTDOWN TIMER ====================
@@ -290,10 +300,10 @@ function initSignupModal() {
       modalCityBadge.textContent = `Etapa ${city.name} • ${city.dateText}`;
     }
     const btnGeral = document.getElementById("modal-btn-geral");
-    if (btnGeral) btnGeral.href = city.urlGeral;
+    if (btnGeral) setSignupLink(btnGeral, city.urlGeral);
 
     const btnColab = document.getElementById("modal-btn-colaborador");
-    if (btnColab) btnColab.href = city.urlColaborador;
+    if (btnColab) setSignupLink(btnColab, city.urlColaborador);
 
     modal.hidden = false;
     document.body.style.overflow = "hidden";
