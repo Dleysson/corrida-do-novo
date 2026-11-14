@@ -1638,23 +1638,44 @@ body[data-page="home"] .city-list .bag::after {
   position: relative;
   max-width: 1080px;
   margin: 0 auto;
-  padding: 72px 24px 80px;
+  padding: 64px 24px 72px;
   display: grid;
-  grid-template-columns: 0.95fr 1.05fr;
-  gap: 56px;
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+  gap: 48px;
   align-items: center;
 }
 
+.story-copy-col {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  min-width: 0;
+}
+
 .story-text-img img {
-  max-width: 440px;
+  max-width: 460px;
   width: 100%;
-  margin: 0 auto;
+  margin: 0;
 }
 
 .story-headline img {
-  max-width: 480px;
+  max-width: 470px;
   width: 100%;
-  margin: 0 auto;
+  margin: 0;
+}
+
+.story-photo-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+}
+
+.story-photo-col img {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.2));
 }
 
 /* ---------- GALLERY MARQUEE ---------- */
@@ -1848,9 +1869,15 @@ body[data-page="home"] .city-list .bag::after {
     padding: 48px 20px;
     gap: 32px;
   }
+  .story-copy-col,
+  .story-photo-col,
   .story-text-img,
   .story-headline {
     min-width: 0;
+  }
+  .story-text-img img,
+  .story-headline img {
+    margin: 0 auto;
   }
   .mslide { height: 180px; }
   .mslide.s { width: 220px; }
