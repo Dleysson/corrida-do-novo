@@ -63,7 +63,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if (document.body.dataset.page === "home") {
-    renderStageCards();
+    currentCityId = cityParam && CITIES[cityParam] ? cityParam : "recife";
+    renderHomeCitySelector();
+    initNavScroll();
     initReveal();
     return;
   }
@@ -77,51 +79,66 @@ document.addEventListener("DOMContentLoaded", () => {
   initReveal();
 });
 
-// ==================== HOME: CITY LIST ====================
-const PIN_ICON = `
-  <span class="city-pin" aria-hidden="true">
-    <svg viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/>
-    </svg>
+// ==================== HOME: CITY SELECTOR (CORRIDA MATEUS STYLE) ====================
+const ARROW_CIRCLE_ICON = `
+  <span class="city-arrow-circle" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6V6z" /></svg>
   </span>`;
 
-function renderStageCards() {
-  const listEl = document.getElementById("city-list");
+const HOME_CITY_ORDER = ["recife", "maceio", "joaoPessoa"];
+const LOCKED_SLOTS_COUNT = 3;
+
+function renderHomeCitySelector() {
+  const city = CITIES[currentCityId];
+  const currentBtn = document.getElementById("city-current-btn");
   const kitImg = document.getElementById("kit-preview-img");
-  if (!listEl) return;
+  const listEl = document.getElementById("city-list");
+  if (!currentBtn || !listEl) return;
 
-  const sorted = [...CITY_KEYS].sort(
-    (a, b) => new Date(CITIES[a].targetDate) - new Date(CITIES[b].targetDate)
-  );
+  const labelEl = currentBtn.querySelector(".city-current-label");
+  if (labelEl) labelEl.textContent = city.label;
 
-  function preview(key, link) {
-    listEl.querySelectorAll(".city-option").forEach((el) => {
-      el.classList.toggle("is-active", el === link);
-    });
-    if (kitImg) {
-      kitImg.src = CITIES[key].kitImg;
-      kitImg.alt = `Kit da etapa ${CITIES[key].name}`;
-    }
+  currentBtn.onclick = () => {
+    window.location.href = `etapa.html?cidade=${currentCityId}`;
+  };
+
+  if (kitImg) {
+    kitImg.src = city.kitImg;
+    kitImg.alt = `Kit do corredor — Etapa ${city.name}`;
   }
 
-  sorted.forEach((key, index) => {
-    const city = CITIES[key];
+  listEl.innerHTML = "";
+
+  HOME_CITY_ORDER.forEach((key) => {
+    if (key === currentCityId) return;
+    const item = CITIES[key];
     const li = document.createElement("li");
-    const link = document.createElement("a");
-    link.className = "city-option";
-    link.href = `etapa.html?cidade=${key}`;
-    link.innerHTML = `
-      ${PIN_ICON}
-      <span class="city-option-name">${city.label}</span>
-      <span class="city-option-date">${city.dateText}</span>
-      <span class="city-option-arrow" aria-hidden="true">→</span>
-    `;
-    link.addEventListener("mouseenter", () => preview(key, link));
-    link.addEventListener("focus", () => preview(key, link));
-    li.appendChild(link);
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "city-option";
+    btn.innerHTML = `${ARROW_CIRCLE_ICON}<span>${item.label}</span>`;
+    btn.addEventListener("click", () => {
+      currentCityId = key;
+      renderHomeCitySelector();
+    });
+    li.appendChild(btn);
     listEl.appendChild(li);
-    if (index === 0) preview(key, link);
   });
+
+  for (let i = 0; i < LOCKED_SLOTS_COUNT; i++) {
+    const li = document.createElement("li");
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.disabled = true;
+    btn.setAttribute("aria-disabled", "true");
+    btn.innerHTML = `<span class="bag" aria-hidden="true"></span><span>EM BREVE</span>`;
+    li.appendChild(btn);
+    listEl.appendChild(li);
+  }
+}
+
+function openRegulamento() {
+  window.location.href = `etapa.html?cidade=${currentCityId}#regulamento`;
 }
 
 // ==================== TABS LOGIC ====================

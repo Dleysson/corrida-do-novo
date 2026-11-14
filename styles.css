@@ -30,6 +30,7 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  overflow-x: hidden;
 }
 
 body {
@@ -1382,4 +1383,515 @@ button:focus-visible {
     font-size: 1.8rem;
   }
 }
+
+/* ==================== HOME PAGE (CORRIDA MATEUS REPLICA) ==================== */
+body[data-page="home"] .topbar-home {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+body[data-page="home"] .section-stages {
+  padding: 46px 24px 56px;
+}
+
+.kit-row {
+  position: relative;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+  gap: 0;
+  align-items: center;
+  z-index: 3;
+}
+
+.kit-card-home {
+  position: relative;
+  z-index: 4;
+  margin-right: -58px;
+  background: linear-gradient(125deg, #f3f3f3 0%, #ffffff 74%, #ffdf00 100%);
+  border-radius: 26px;
+  box-shadow: 0 28px 48px rgba(0, 0, 0, 0.24);
+  padding: 20px 24px 18px;
+  min-height: 460px;
+}
+
+.kit-card-home .kit-preview-frame {
+  width: 360px;
+  height: 420px;
+  align-items: flex-end;
+  margin: 0 auto;
+}
+
+.kit-card-home .kit-preview-img {
+  height: 400px;
+  max-height: 400px;
+  width: auto;
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+body[data-page="home"] .city-aside {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  margin-left: -2px;
+  max-width: none;
+}
+
+body[data-page="home"] .city-aside .label {
+  font-family: "Barlow", sans-serif;
+  font-style: italic;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.16em;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+body[data-page="home"] .city-panel {
+  background: #fff;
+  border-radius: 26px;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.18);
+  padding: 14px 24px 18px 32px;
+  min-height: 340px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 5;
+}
+
+.city-current {
+  width: calc(100% + 56px);
+  background: var(--yellow);
+  color: var(--primary-red);
+  border: 0;
+  border-radius: 999px;
+  margin-left: -56px;
+  margin-top: 6px;
+  padding: 13px 22px 13px 16px;
+  font-family: "Barlow", sans-serif;
+  font-style: italic;
+  font-weight: 900;
+  font-size: 23px;
+  letter-spacing: 0.02em;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
+  position: relative;
+  z-index: 7;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.city-current:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.28);
+}
+
+.city-current .arrow {
+  width: 26px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid var(--primary-red);
+  background: transparent;
+  flex: 0 0 26px;
+}
+
+.city-current .arrow svg {
+  width: 13px;
+  height: 13px;
+  fill: var(--primary-red);
+}
+
+body[data-page="home"] .city-list {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+body[data-page="home"] .city-list li button {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #dddddd;
+  padding: 10px 4px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: "Barlow", sans-serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.04em;
+  color: #b9b9b9;
+  text-align: left;
+  cursor: not-allowed;
+  transition: color 0.15s, background 0.15s, transform 0.12s;
+}
+
+body[data-page="home"] .city-list li button.city-option {
+  cursor: pointer;
+  color: #444;
+  border-radius: 0;
+  padding: 10px 4px;
+}
+
+body[data-page="home"] .city-list li button.city-option:hover {
+  color: var(--primary-red);
+  background: #fbfbfb;
+}
+
+body[data-page="home"] .city-list li:last-child button {
+  border-bottom: 0;
+}
+
+.city-arrow-circle {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1.5px solid var(--primary-red);
+  color: var(--primary-red);
+}
+
+.city-arrow-circle svg {
+  width: 10px;
+  height: 10px;
+  fill: currentColor;
+}
+
+body[data-page="home"] .city-list .bag {
+  position: relative;
+  width: 22px;
+  height: 20px;
+  flex: 0 0 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #c9c9c9;
+  border-radius: 3px;
+  color: #c9c9c9;
+}
+
+body[data-page="home"] .city-list .bag::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 9px;
+  height: 6px;
+  border: 1px solid currentColor;
+  border-bottom: 0;
+  border-radius: 6px 6px 0 0;
+}
+
+body[data-page="home"] .city-list .bag::after {
+  content: "";
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2.5px;
+  height: 5px;
+  border: 1px solid currentColor;
+  border-radius: 1px;
+}
+
+/* ---------- STORY SECTION (YELLOW) ---------- */
+.story-novo {
+  position: relative;
+  background-color: #FFD100;
+  background-image: url("assets/common/bg-yellow.png");
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.story-novo .story-wrap {
+  position: relative;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 72px 24px 80px;
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.story-text-img img {
+  max-width: 440px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.story-headline img {
+  max-width: 480px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ---------- GALLERY MARQUEE ---------- */
+.gallery {
+  position: relative;
+  background-color: var(--primary-red);
+  padding: 56px 0 64px;
+  overflow: hidden;
+}
+
+.marquee {
+  position: relative;
+  overflow: hidden;
+  padding: 6px 0;
+}
+
+.marquee + .marquee {
+  margin-top: 14px;
+}
+
+.marquee-track {
+  display: flex;
+  gap: 14px;
+  width: max-content;
+  animation: marquee-scroll var(--marquee-duration, 60s) linear infinite;
+}
+
+.marquee.reverse .marquee-track {
+  animation-direction: reverse;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.mslide {
+  flex: 0 0 auto;
+  height: 240px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #dadada;
+  position: relative;
+}
+
+.mslide img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mslide.s { width: 320px; }
+.mslide.m { width: 460px; }
+.mslide.l { width: 600px; }
+.mslide.xl { width: 720px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* ---------- CTA REGULAMENTO ---------- */
+.cta-band-home {
+  background: #FFD100;
+  height: 160px;
+  display: grid;
+  place-items: center;
+  padding: 0 24px;
+}
+
+.cta-btn-regulamento {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 65px;
+  padding: 0 80px;
+  background: var(--primary-red);
+  color: #fff;
+  border-radius: 999px;
+  border: 0;
+  font-family: "Barlow", sans-serif;
+  font-style: italic;
+  font-weight: 900;
+  font-size: 24px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-shadow: 0 10px 26px rgba(230, 0, 18, 0.35);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.15s;
+}
+
+.cta-btn-regulamento:hover {
+  transform: translateY(-2px);
+  background: var(--primary-red-hover);
+  box-shadow: 0 16px 30px rgba(230, 0, 18, 0.45);
+}
+
+/* ---------- MARCAS PARCEIRAS & LEGAL FOOTER ---------- */
+.partners {
+  background: #f3f3f3;
+  padding: 64px 64px 72px;
+}
+
+.partners-inner {
+  max-width: 1080px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.partners-title {
+  font-family: "Barlow", sans-serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8a8a8a;
+  margin: 0 0 36px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.partners-empty {
+  text-align: center;
+  padding: 28px 0;
+  font-family: "Barlow", sans-serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #b0b0b0;
+}
+
+.legal {
+  background: #fff;
+  padding: 22px 64px 40px;
+  color: #9a9a9a;
+  font-family: "Barlow", sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #ececec;
+}
+
+@media (max-width: 1080px) {
+  .kit-row {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 20px 28px 0;
+    gap: 0;
+  }
+  .kit-card-home {
+    margin-right: 0;
+    margin-bottom: -24px;
+    min-height: 380px;
+    min-width: 0;
+  }
+  body[data-page="home"] .city-aside {
+    margin-left: 0;
+    min-width: 0;
+  }
+  body[data-page="home"] .city-aside .label {
+    text-align: left;
+    padding-left: 8px;
+    margin-bottom: 8px;
+  }
+  body[data-page="home"] .city-panel {
+    padding: 36px 24px 28px;
+    min-height: 0;
+    min-width: 0;
+  }
+  .city-current {
+    width: 100%;
+    margin-left: 0;
+  }
+  .story-novo .story-wrap {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 48px 20px;
+    gap: 32px;
+  }
+  .story-text-img,
+  .story-headline {
+    min-width: 0;
+  }
+  .mslide { height: 180px; }
+  .mslide.s { width: 220px; }
+  .mslide.m { width: 320px; }
+  .mslide.l { width: 420px; }
+  .mslide.xl { width: 520px; }
+  .partners {
+    padding: 44px 24px 52px;
+  }
+  .legal {
+    padding: 22px 28px;
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .kit-row {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 12px 12px 0;
+    gap: 16px;
+  }
+  .kit-card-home {
+    margin-bottom: 0;
+    min-height: 300px;
+    border-radius: 18px;
+    padding: 16px;
+  }
+  .kit-card-home .kit-preview-frame {
+    width: 100%;
+    height: 280px;
+  }
+  .kit-card-home .kit-preview-img {
+    height: 260px;
+    max-height: 260px;
+  }
+  .city-current {
+    font-size: 18px;
+    padding: 11px 16px;
+  }
+  .cta-btn-regulamento {
+    font-size: 16px;
+    padding: 0 36px;
+    height: 54px;
+  }
+  .mslide { height: 140px; }
+  .mslide.s { width: 160px; }
+  .mslide.m { width: 220px; }
+  .mslide.l { width: 300px; }
+  .mslide.xl { width: 360px; }
+}
+
 
