@@ -1669,6 +1669,7 @@ body[data-page="home"] .city-list .bag::after {
   position: relative;
   overflow: hidden;
   padding: 6px 0;
+  contain: layout style paint;
 }
 
 .marquee + .marquee {
@@ -1679,23 +1680,22 @@ body[data-page="home"] .city-list .bag::after {
   display: flex;
   gap: 14px;
   width: max-content;
-  animation: marquee-scroll var(--marquee-duration, 60s) linear infinite;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  animation: marquee-scroll var(--marquee-duration, 55s) linear infinite;
 }
 
 .marquee.reverse .marquee-track {
   animation-direction: reverse;
 }
 
-.marquee:hover .marquee-track {
-  animation-play-state: paused;
-}
-
 @keyframes marquee-scroll {
   from {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
   to {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
@@ -1704,8 +1704,9 @@ body[data-page="home"] .city-list .bag::after {
   height: 240px;
   border-radius: 4px;
   overflow: hidden;
-  background: #dadada;
+  background: #c40010;
   position: relative;
+  contain: layout style paint;
 }
 
 .mslide img {
