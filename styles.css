@@ -1411,8 +1411,8 @@ body[data-page="home"] .section-stages {
   position: relative;
   z-index: 4;
   margin-right: -58px;
-  background-color: #f5f5f5;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 540' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L285,0 L248,22 L212,25 L165,38 L108,42 L58,56 L18,62 L0,72 Z' fill='%23ffdf00'/%3E%3Cpath d='M535,0 L600,0 L600,540 L265,540 L318,522 L372,516 L418,494 L466,472 L505,436 L478,428 L508,402 L488,386 L526,356 L512,330 L538,298 L516,278 L544,244 L518,220 L546,184 L524,158 L548,124 L528,96 L552,64 L536,34 Z' fill='%23ffdf00'/%3E%3C/svg%3E");
+  background-color: #f6f6f6;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 540' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L292,0 C245,28 158,48 0,78 Z' fill='%23ffdf00'/%3E%3Cpath d='M516,0 L600,0 L600,540 L282,540 C318,524 358,516 404,504 C432,496 456,486 476,472 C464,468 456,464 468,454 C484,442 504,432 512,418 C492,414 464,418 446,410 C464,398 486,388 504,372 C490,368 474,366 478,356 C484,344 510,334 522,318 C508,312 498,304 512,292 C526,280 536,268 530,254 C518,248 510,240 524,228 C536,216 544,202 534,188 C522,182 514,174 526,160 C538,146 544,130 532,116 C520,108 514,98 526,84 C536,70 538,54 524,40 C514,30 508,16 516,0 Z' fill='%23ffdf00'/%3E%3C/svg%3E");
   background-size: 100% 100%;
   background-repeat: no-repeat;
   border-radius: 26px;
