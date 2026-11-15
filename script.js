@@ -67,6 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderHomeCitySelector();
     initNavScroll();
     initReveal();
+    initMarquee();
     return;
   }
 
@@ -138,7 +139,7 @@ function renderHomeCitySelector() {
 }
 
 function openRegulamento() {
-  window.location.href = `etapa.html?cidade=${currentCityId}#regulamento`;
+  window.open("assets/common/regulamento-geral.pdf", "_blank", "noopener");
 }
 
 // ==================== TABS LOGIC ====================
@@ -395,4 +396,16 @@ function initReveal() {
     el.classList.add("reveal");
     observer.observe(el);
   });
+}
+
+// ==================== GALLERY MARQUEE ====================
+function initMarquee() {
+  if (!("IntersectionObserver" in window)) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      entry.target.classList.toggle("is-offscreen", !entry.isIntersecting);
+    });
+  });
+  document.querySelectorAll(".marquee").forEach((el) => observer.observe(el));
 }
