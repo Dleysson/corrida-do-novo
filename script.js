@@ -12,7 +12,7 @@ const CITIES = {
     distances: ["5KM", "10KM", "15KM"],
     location: "Praia de Pajuçara / Ponta Verde — Maceió, AL",
     time: "06h00 (Largada)",
-    regulamentoUrl: "#regulamento"
+    regulamentoUrl: "assets/maceio/regulamento-maceio.pdf"
   },
   recife: {
     id: "recife",
@@ -26,7 +26,7 @@ const CITIES = {
     distances: ["5KM", "10KM", "15KM"],
     location: "Cais da Alfândega / Marco Zero — Recife, PE",
     time: "06h00 (Largada)",
-    regulamentoUrl: "#regulamento"
+    regulamentoUrl: "assets/recife/regulamento-recife.pdf"
   },
   joaoPessoa: {
     id: "joaoPessoa",
@@ -40,7 +40,7 @@ const CITIES = {
     distances: ["5KM", "10KM", "15KM"],
     location: "Busto de Tamandaré / Cabo Branco — João Pessoa, PB",
     time: "06h00 (Largada)",
-    regulamentoUrl: "#regulamento"
+    regulamentoUrl: "assets/joao-pessoa/regulamento-joao-pessoa.pdf"
   }
 };
 
@@ -230,6 +230,12 @@ function updateCityUI() {
   const cdNotice = document.getElementById("countdown-city-notice");
   if (cdNotice) {
     cdNotice.textContent = `ETAPA ${city.label} • ${city.dateText.toUpperCase()} • LARGADA 06H`;
+  }
+
+  // 6. Update stage regulation PDF link
+  const regLink = document.getElementById("btn-download-regulamento");
+  if (regLink && city.regulamentoUrl) {
+    regLink.href = city.regulamentoUrl;
   }
 }
 
