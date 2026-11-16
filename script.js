@@ -12,6 +12,8 @@ const CITIES = {
     distances: ["5KM", "10KM", "15KM"],
     location: "Praia de Pajuçara / Ponta Verde — Maceió, AL",
     time: "06h00 (Largada)",
+    urlGeral: "https://eventos.fluasports.com/corrida-do-novo-circuito-2027-maceio",
+    urlColaborador: "https://eventos.fluasports.com/corrida-do-novo-circuito-2027-maceio-colaborador",
     regulamentoUrl: "assets/maceio/regulamento-maceio.pdf"
   },
   recife: {
@@ -26,6 +28,8 @@ const CITIES = {
     distances: ["5KM", "10KM", "15KM"],
     location: "Cais da Alfândega / Marco Zero — Recife, PE",
     time: "06h00 (Largada)",
+    urlGeral: "https://eventos.fluasports.com/corrida-do-novo-circuito-2027-recife",
+    urlColaborador: "https://eventos.fluasports.com/corrida-do-novo-circuito-2027-recife-colaborador",
     regulamentoUrl: "assets/recife/regulamento-recife.pdf"
   },
   joaoPessoa: {
@@ -40,6 +44,8 @@ const CITIES = {
     distances: ["5KM", "10KM", "15KM"],
     location: "Busto de Tamandaré / Cabo Branco — João Pessoa, PB",
     time: "06h00 (Largada)",
+    urlGeral: "https://eventos.fluasports.com/corrida-do-novo-circuito-2027-joao-pessoa",
+    urlColaborador: "https://eventos.fluasports.com/corrida-do-novo-circuito-2027-joao-pessoa-colaborador",
     regulamentoUrl: "assets/joao-pessoa/regulamento-joao-pessoa.pdf"
   }
 };
