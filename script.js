@@ -10,8 +10,8 @@ const CITIES = {
     kitImg: "assets/maceio/CAMISA_MACEIO.png",
     dateImg: "assets/maceio/DOBRA_DATA.png",
     distances: ["5KM", "10KM", "15KM"],
-    location: "Praia de Pajuçara / Ponta Verde — Maceió, AL",
-    time: "06h00 (Largada)",
+    location: "Em breve",
+    time: "Em breve",
     urlGeral: "https://eventos.fluasports.com/corrida-do-novo-circuito-2027-maceio",
     urlColaborador: "https://eventos.fluasports.com/corrida-do-novo-circuito-2027-maceio-colaborador",
     regulamentoUrl: "assets/maceio/regulamento-maceio.pdf"
@@ -26,8 +26,8 @@ const CITIES = {
     kitImg: "assets/recife/CAMISA_RECIFE.png",
     dateImg: "assets/recife/DOBRA_DATA.png",
     distances: ["5KM", "10KM", "15KM"],
-    location: "Cais da Alfândega / Marco Zero — Recife, PE",
-    time: "06h00 (Largada)",
+    location: "Em breve",
+    time: "Em breve",
     urlGeral: "https://eventos.fluasports.com/corrida-do-novo-circuito-2027-recife",
     urlColaborador: "https://eventos.fluasports.com/corrida-do-novo-circuito-2027-recife-colaborador",
     regulamentoUrl: "assets/recife/regulamento-recife.pdf"
@@ -42,8 +42,8 @@ const CITIES = {
     kitImg: "assets/joao-pessoa/CAMISA_JP.png",
     dateImg: "assets/joao-pessoa/DOBRA_DATA.png",
     distances: ["5KM", "10KM", "15KM"],
-    location: "Busto de Tamandaré / Cabo Branco — João Pessoa, PB",
-    time: "06h00 (Largada)",
+    location: "Em breve",
+    time: "Em breve",
     urlGeral: "https://eventos.fluasports.com/corrida-do-novo-circuito-2027-joao-pessoa",
     urlColaborador: "https://eventos.fluasports.com/corrida-do-novo-circuito-2027-joao-pessoa-colaborador",
     regulamentoUrl: "assets/joao-pessoa/regulamento-joao-pessoa.pdf"
@@ -235,7 +235,7 @@ function updateCityUI() {
   // 5. Update countdown city notice
   const cdNotice = document.getElementById("countdown-city-notice");
   if (cdNotice) {
-    cdNotice.textContent = `ETAPA ${city.label} • ${city.dateText.toUpperCase()} • LARGADA 06H`;
+    cdNotice.textContent = `ETAPA ${city.label} • ${city.dateText.toUpperCase()} • 5KM | 10KM | 15KM`;
   }
 
   // 6. Update stage regulation PDF link
