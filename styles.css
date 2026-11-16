@@ -1700,9 +1700,7 @@ body[data-page="home"] .city-list .bag::after {
 
 .marquee-track {
   display: flex;
-  gap: 14px;
   width: max-content;
-  will-change: transform;
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   animation: marquee-scroll var(--marquee-duration, 55s) linear infinite;
@@ -1710,6 +1708,10 @@ body[data-page="home"] .city-list .bag::after {
 
 .marquee.reverse .marquee-track {
   animation-direction: reverse;
+}
+
+.marquee.is-offscreen .marquee-track {
+  animation-play-state: paused;
 }
 
 @keyframes marquee-scroll {
@@ -1724,25 +1726,17 @@ body[data-page="home"] .city-list .bag::after {
 .mslide {
   flex: 0 0 auto;
   height: 240px;
+  margin-right: 14px;
   border-radius: 4px;
   overflow: hidden;
   background: #c40010;
-  position: relative;
-  contain: layout style paint;
 }
 
 .mslide img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
+  display: block;
   height: 100%;
-  object-fit: cover;
+  width: auto;
 }
-
-.mslide.s { width: 320px; }
-.mslide.m { width: 460px; }
-.mslide.l { width: 600px; }
-.mslide.xl { width: 720px; }
 
 @media (prefers-reduced-motion: reduce) {
   .marquee-track {
@@ -1881,10 +1875,6 @@ body[data-page="home"] .city-list .bag::after {
     margin: 0 auto;
   }
   .mslide { height: 180px; }
-  .mslide.s { width: 220px; }
-  .mslide.m { width: 320px; }
-  .mslide.l { width: 420px; }
-  .mslide.xl { width: 520px; }
   .partners {
     padding: 44px 24px 52px;
   }
@@ -1926,10 +1916,6 @@ body[data-page="home"] .city-list .bag::after {
     height: 54px;
   }
   .mslide { height: 140px; }
-  .mslide.s { width: 160px; }
-  .mslide.m { width: 220px; }
-  .mslide.l { width: 300px; }
-  .mslide.xl { width: 360px; }
 }
 
 
