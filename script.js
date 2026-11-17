@@ -14,7 +14,12 @@ const CITIES = {
     time: "Em breve",
     urlGeral: "https://eventos.fluasports.com/corrida-do-novo-circuito-2027-maceio",
     urlColaborador: "https://eventos.fluasports.com/corrida-do-novo-circuito-2027-maceio-colaborador",
-    regulamentoUrl: "assets/maceio/regulamento-maceio.pdf"
+    regulamentoUrl: "assets/maceio/regulamento-maceio.pdf",
+    priceGeralInt: "149",
+    priceGeralDec: ",00",
+    priceOld: "R$ 149,00",
+    priceColabInt: "119",
+    priceColabDec: ",20"
   },
   recife: {
     id: "recife",
@@ -30,7 +35,12 @@ const CITIES = {
     time: "Em breve",
     urlGeral: "https://eventos.fluasports.com/corrida-do-novo-circuito-2027-recife",
     urlColaborador: "https://eventos.fluasports.com/corrida-do-novo-circuito-2027-recife-colaborador",
-    regulamentoUrl: "assets/recife/regulamento-recife.pdf"
+    regulamentoUrl: "assets/recife/regulamento-recife.pdf",
+    priceGeralInt: "169",
+    priceGeralDec: ",00",
+    priceOld: "R$ 169,00",
+    priceColabInt: "135",
+    priceColabDec: ",20"
   },
   joaoPessoa: {
     id: "joaoPessoa",
@@ -46,7 +56,12 @@ const CITIES = {
     time: "Em breve",
     urlGeral: "https://eventos.fluasports.com/corrida-do-novo-circuito-2027-joao-pessoa",
     urlColaborador: "https://eventos.fluasports.com/corrida-do-novo-circuito-2027-joao-pessoa-colaborador",
-    regulamentoUrl: "assets/joao-pessoa/regulamento-joao-pessoa.pdf"
+    regulamentoUrl: "assets/joao-pessoa/regulamento-joao-pessoa.pdf",
+    priceGeralInt: "149",
+    priceGeralDec: ",00",
+    priceOld: "R$ 149,00",
+    priceColabInt: "119",
+    priceColabDec: ",20"
   }
 };
 
@@ -243,6 +258,23 @@ function updateCityUI() {
   if (regLink && city.regulamentoUrl) {
     regLink.href = city.regulamentoUrl;
   }
+
+  // 7. Update city-specific ticket prices
+  document.querySelectorAll(".dynamic-price-geral-int").forEach((el) => {
+    el.textContent = city.priceGeralInt;
+  });
+  document.querySelectorAll(".dynamic-price-geral-dec").forEach((el) => {
+    el.textContent = city.priceGeralDec;
+  });
+  document.querySelectorAll(".dynamic-price-old").forEach((el) => {
+    el.textContent = city.priceOld;
+  });
+  document.querySelectorAll(".dynamic-price-colab-int").forEach((el) => {
+    el.textContent = city.priceColabInt;
+  });
+  document.querySelectorAll(".dynamic-price-colab-dec").forEach((el) => {
+    el.textContent = city.priceColabDec;
+  });
 }
 
 // Inscrições fechadas: sem URL no CITIES, o botão fica desativado e sem href,
